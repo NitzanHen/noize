@@ -35,17 +35,7 @@ export function variable<T>(probabilityMap: [T, number][]) {
     cdf.push(acc);
   }
 
-  console.log(cdf.slice(190));
-
-
   return (x: number) => {
-    if (x < 0) {
-      return 0;
-    }
-    else if (x > 1) {
-      return 1;
-    }
-
     const index = binarySearch(cdf, (i => {
       //console.log(i, cdf[i-1], cdf[i], x)
 
