@@ -17,6 +17,10 @@ export function binomialDistribution(n: number, p: number) {
   return (i: number) => Math.pow(p, i) * Math.pow(1 - p, n - i) * c(n, i);
 }
 
+export function geometricDistribution(p: number) {
+  return (i: number) => Math.pow(1 - p, i - 1) * p;
+}
+
 export function variable<T>(probabilityMap: [T, number][]) {
   // Used to improve calculations in small probabilities
 
@@ -31,8 +35,8 @@ export function variable<T>(probabilityMap: [T, number][]) {
     cdf.push(acc);
   }
 
-  console.log(cdf);
-  
+  console.log(cdf.slice(190));
+
 
   return (x: number) => {
     if (x < 0) {
@@ -63,9 +67,9 @@ export function random<T>(variable: RandomVariable<T>): T {
   return variable(Math.random());
 }
 
-const n = 90;
-const binomial = binomialDistribution(n, 0.5);
-const map: [number, number][] = [...Array(n + 1).keys()].map(i => [i, binomial(i)]);
+const n = 1_000;
+const geo = geometricDistribution(0.02);
+const map: [number, number][] = [...Array(n).keys()].map(i => [i + 1, geo(i)]);
 const rndVar = variable(map);
 
 const results = new Map<number, number>();
