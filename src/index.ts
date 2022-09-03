@@ -1,3 +1,4 @@
+export * from './variable';
 import { variable } from './variable';
 
 export function randomInt(min: number, max: number) {

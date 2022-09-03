@@ -1,16 +1,44 @@
 {
   "name": "noize",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "tsc -w"
+  "description": "Probability utils",
+  "author": {
+    "name": "Nitzan Hen",
+    "email": "code@nitzanhen.net",
+    "url": "https://github.com/NitzanHen"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "rollup -c rollup.config.js --watch",
+    "build": "rimraf dist && rollup -c rollup.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NitzanHen/noize.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NitzanHen/noize/issues"
+  },
+  "homepage": "https://github.com/NitzanHen/noize/#readme",
   "devDependencies": {
+    "rimraf": "^3.0.2",
+    "rollup": "^2.79.0",
+    "rollup-plugin-ts": "^3.0.2",
     "typescript": "^4.8.2"
   },
-  "dependencies": {}
+  "keywords": [
+    "probability"
+  ],
+  "license": "MIT"
 }
